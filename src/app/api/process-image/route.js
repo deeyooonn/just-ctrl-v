@@ -380,12 +380,17 @@ export async function POST(request) {
         return true;
       });
 
-      // Ensure all rows have the exact same headers as the first valid row
-      if (validRows.length > 0) {
-        const baseHeaders = Object.keys(validRows[0]);
-        const uniformRows = validRows.filter(row => {
-          const keys = Object.keys(row);
-          return keys.length === baseHeaders.length && baseHeaders.every(h => keys.includes(h));
+        // Unify headers across all valid rows
+        const allHeaders = new Set();
+        validRows.forEach(row => Object.keys(row).forEach(k => allHeaders.add(k)));
+        const baseHeaders = Array.from(allHeaders);
+        
+        const uniformRows = validRows.map(row => {
+          const newRow = {};
+          baseHeaders.forEach(h => {
+            newRow[h] = row[h] !== undefined && row[h] !== null ? String(row[h]) : "";
+          });
+          return newRow;
         });
         
         let autoSaved = false;
@@ -409,9 +414,6 @@ export async function POST(request) {
         }
         
         return NextResponse.json({ rows: uniformRows, mode, autoSaved });
-      }
-      
-      return NextResponse.json({ rows: [], mode, autoSaved: false });
     }
 
     return NextResponse.json({ flashcards: [], mode });
