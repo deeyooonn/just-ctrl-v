@@ -57,7 +57,7 @@ export default function UpgradePage() {
         <div className="w-full max-w-5xl mb-8 flex flex-col items-center">
           <Link 
             href="/"
-            className="fixed top-24 left-8 z-[100] inline-flex items-center gap-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all shadow-sm"
+            className="mb-8 self-start inline-flex items-center gap-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all shadow-sm"
           >
             ← Back to Landing Page
           </Link>
