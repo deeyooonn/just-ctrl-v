@@ -360,12 +360,24 @@ export async function POST(request) {
         const keys = Object.keys(row);
         if (keys.length < 2) return false; // Need at least two columns
 
-        return keys.every((k) => {
+        // Ensure at least one cell has real data
+        const hasData = keys.some((k) => {
           const v = row[k];
           if (v === null || v === undefined) return false;
           const str = String(v).trim().toLowerCase();
           return str !== "" && str !== "null" && str !== "undefined" && str !== "n/a" && str !== "-";
         });
+        
+        if (!hasData) return false;
+
+        // Clean up empty cells
+        keys.forEach(k => {
+          const v = row[k];
+          if (v === null || v === undefined) row[k] = "";
+          else if (String(v).trim().toLowerCase() === "null") row[k] = "";
+        });
+
+        return true;
       });
 
       // Ensure all rows have the exact same headers as the first valid row

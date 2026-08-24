@@ -70,12 +70,13 @@ export const authOptions = {
         // Fetch fresh user data from DB so plan updates and profile changes are instant
         const dbUser = await prisma.user.findUnique({
           where: { id: token.id },
-          select: { planTier: true, createdAt: true, name: true, image: true },
+          select: { planTier: true, createdAt: true, name: true, image: true, autoSaveEnabled: true },
         });
 
         if (dbUser) {
           session.user.planTier = dbUser.planTier;
           session.user.createdAt = dbUser.createdAt;
+          session.user.autoSaveEnabled = dbUser.autoSaveEnabled;
           if (dbUser.name) session.user.name = dbUser.name;
           if (dbUser.image) session.user.image = dbUser.image;
         }
