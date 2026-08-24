@@ -31,7 +31,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@next/swc-win32-x64-msvc": "16.3.2",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.3.2",
@@ -39,7 +38,6 @@
     "tailwindcss": "^4"
   },
   "allowScripts": {
-    "unrs-resolver@1.12.2": true,
-    "@next/swc-win32-x64-msvc@16.3.2": true
+    "unrs-resolver@1.12.2": true
   }
 }
