@@ -1,6 +1,8 @@
 import "./globals.css";
 import Providers from "@/components/Providers";
 
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#101315' };
+
 export const metadata = {
   title: "Just CTRL + V",
   description: "Paste a screenshot. Get flashcards.",
