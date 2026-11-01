@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 
+@media (pointer: coarse) {
+  input, textarea, select { font-size: 16px !important; }
+  button { min-height: 44px; touch-action: manipulation; }
+}
+
 @theme {
   --font-sys: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
   --color-accent: #6366f1;
