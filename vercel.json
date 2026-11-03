@@ -2,5 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "installCommand": "npm ci",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "just-ctrl-v.vercel.app" }],
+      "destination": "https://just-ctrl-v-zst2.vercel.app/:path*",
+      "permanent": false
+    }
+  ]
 }
